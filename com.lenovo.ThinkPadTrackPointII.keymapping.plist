@@ -1,0 +1,63 @@
+<!-- Lenovo ThinkPad TrackPoint Keyboard II - VID 0x17EF, PID 0x60EE -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>com.lenovo.ThinkPadTrackPointII.keymapping</string>
+    <key>LaunchEvents</key>
+    <dict>
+        <key>com.apple.iokit.matching</key>
+        <dict>
+            <key>com.apple.bluetooth.hostController</key>
+            <dict>
+                <key>IOProviderClass</key>
+                <string>IOBluetoothHCIController</string>
+                <key>idVendor</key>
+                <integer>17EF</integer>
+                <key>idProduct</key>
+                <integer>60EE</integer>
+                <key>IOMatchLaunchStream</key>
+                <true/>
+            </dict>
+            <key>com.apple.usb.device</key>
+            <dict>
+                <key>IOProviderClass</key>
+                <string>IOUSBHostDevice</string>
+                <key>idVendor</key>
+                <integer>17EF</integer>
+                <key>idProduct</key>
+                <integer>60EE</integer>
+                <key>IOMatchLaunchStream</key>
+                <true/>
+            </dict>
+        </dict>
+    </dict>
+    <key>ProgramArguments</key>
+    <array>
+      <string>/usr/bin/hidutil</string>
+      <string>property</string>
+      <string>--matching</string>
+      <string>{"VendorID": 0x17ef, "ProductID": 0x60ee}</string>
+      <string>--set</string>
+      <string>
+        {
+            "UserKeyMapping": [
+                {
+                    "HIDKeyboardModifierMappingDst":0x7000000e3,
+                    "HIDKeyboardModifierMappingSrc":0x7000000e2
+                },
+                {
+                    "HIDKeyboardModifierMappingDst":0x7000000e2,
+                    "HIDKeyboardModifierMappingSrc":0x7000000e3
+                }
+            ]
+        }
+      </string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <false/>
+  </dict>
+</plist>
