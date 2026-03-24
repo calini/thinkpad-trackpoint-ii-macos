@@ -15,10 +15,23 @@ Initial idea from this [apple.stackexchange.com](https://apple.stackexchange.com
 
 On macOS Tahoe (and possibly Sequoia), `/usr/bin/hidutil` must be granted **Input Monitoring** access or the key remapping will silently do nothing.
 
-1. Open **System Settings → Privacy & Security → Input Monitoring**
-2. Click **+** and add `/usr/bin/hidutil` (use ⌘⇧G in the file picker to type the path)
-3. Ensure the toggle next to `hidutil` is enabled
-4. Reload the LaunchDaemon: `sudo launchctl unload /Library/LaunchDaemons/com.lenovo.ThinkPadTrackPointII.keymapping.plist && sudo launchctl load /Library/LaunchDaemons/com.lenovo.ThinkPadTrackPointII.keymapping.plist`
+Run the following to open System Settings directly to the Input Monitoring page:
+
+```sh
+make grant-input-monitoring
+```
+
+This opens the pane and prints instructions for adding `/usr/bin/hidutil` if it isn't listed yet:
+
+1. Click **+**
+2. Press ⌘⇧G and type `/usr/bin/hidutil`
+3. Click **Open**, then enable the toggle next to `hidutil`
+
+Once enabled, reload the LaunchDaemon:
+
+```sh
+sudo launchctl unload /Library/LaunchDaemons/com.lenovo.ThinkPadTrackPointII.keymapping.plist && sudo launchctl load /Library/LaunchDaemons/com.lenovo.ThinkPadTrackPointII.keymapping.plist
+```
 
 ## HID Key Codes Reference
 
